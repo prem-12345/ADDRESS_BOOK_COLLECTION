@@ -2,8 +2,7 @@ package com.bridgelabz.addressbook;
 
 import java.util.Scanner;
 
-public class Contact {             //UC1 ABILITY TO CREATE CONTACTS IN ADDRESS BOOK
-
+public class Contact {
     Scanner sc = new Scanner(System.in);
     private String firstName;
     private String lastName;
@@ -145,7 +144,6 @@ public class Contact {             //UC1 ABILITY TO CREATE CONTACTS IN ADDRESS B
                 setPhoneNumber(phoneNumber);
                 break;
 
-                //UC4 ABILITY TO DELETE EXISTING CONTACT PERSON USING THEIR NAME
             case 'I':
                 setFirstName(null);
                 setLastName(null);
@@ -157,7 +155,7 @@ public class Contact {             //UC1 ABILITY TO CREATE CONTACTS IN ADDRESS B
                 setPhoneNumber(null);
 
         }
-    }
 
+    }
 
 }
