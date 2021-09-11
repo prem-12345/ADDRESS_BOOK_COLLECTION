@@ -1,5 +1,6 @@
 package com.bridgelabz.addressbook;
 
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -11,12 +12,69 @@ public class AddressBookMain {
 
       //Welcome to Address Book Collection program
 
-        ArrayList<Contact> records = new ArrayList<>();
-        userInterface(records);
+        newUserInterface();
 
     }
 
-    // UC5 ABILITY TO ADD MULTIPLE PERSON TO ADDRESS BOOK
+    //UC6 REFACTOR TO ADD MULTIPLE ADDRESS BOOK TO THE SYSTEM
+
+    String bookName;
+
+    AddressBookMain(String name) {
+        this.bookName = name;
+    }
+
+    String getName() {
+        return this.bookName;
+    }
+
+    public static void newUserInterface() {
+        ArrayList<AddressBookMain> book = new ArrayList<>();
+        HashMap<Integer, ArrayList<Contact>> data = new HashMap<>();
+
+        int count = 1;
+        boolean flag = true;
+        while (flag) {
+
+            System.out.println("**************** WELCOME *****************");
+            System.out.println("SELECT ANY ONE OPTION");
+            System.out.println(" 1.CREATE NEW ADDRESS BOOK \n 2.DISPLAY ALL ADDRESS BOOK \n 3.EDIT ADDRESS BOOK  \n 4.EXIT");
+
+            Scanner sc = new Scanner(System.in);
+            int option = sc.nextInt();
+
+            switch (option) {
+
+                case 1:
+                    sc.nextLine();
+                    ArrayList<Contact> records = new ArrayList<>();
+                    data.put(count, records);
+                    System.out.println("NAME OF ADDRESS BOOK: ");
+                    String bookName = sc.nextLine();
+                    book.add(new AddressBookMain(bookName));
+                    userInterface(data.get(count));
+                    count += 1;
+                    break;
+                case 2:
+                    printBook(book);
+                    break;
+                case 3:
+                    System.out.println("NAME OF THE ADDRESS BOOK: ");
+                    sc.nextLine();
+                    String name = sc.nextLine();
+                    int index = serchKey(name, book);
+                    userInterface(data.get(index));
+                    break;
+                case 4:
+                    System.out.println("************************Thank You**********************");
+                    flag = false;
+                    break;
+
+
+            }
+        }
+    }
+
     public static void userInterface(ArrayList<Contact> records) {
 
         boolean flag = true;
@@ -98,5 +156,24 @@ public class AddressBookMain {
         }
     }
 
+    public static void printBook(ArrayList<AddressBookMain> book) {
+        for (AddressBookMain b : book) {
+            System.out.println(b.bookName);
+        }
+    }
 
-  }
+    public static int serchKey(String name, ArrayList<AddressBookMain> books) {
+        int count = 1;
+        for (AddressBookMain book : books) {
+            if (Objects.equals(name, book.getName())) {
+                return count;
+            }
+            count++;
+        }
+        System.out.println("PLEASE PROVIDE VALID INPUT.");
+        return 0;
+    }
+
+
+
+}
