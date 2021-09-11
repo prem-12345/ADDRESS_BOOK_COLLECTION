@@ -35,6 +35,10 @@ public class AddressBookMain {
 
         Contact person = new Contact(firstName, lastName, address, city, state, email, zipcode, phoneNumber);
         person.display();
+
+        //UC3 ABILITY TO EDIT EXISTING CONTACT PERSON USING THEIR NAME
+        person.editDetails();
+        person.display();
     }
 
   }
