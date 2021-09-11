@@ -186,7 +186,6 @@ public class AddressBookMain {
             } else {
                 System.out.println("Person already in records.");
             }
-
         }
     }
 
