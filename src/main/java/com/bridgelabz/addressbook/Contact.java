@@ -145,6 +145,7 @@ public class Contact {             //UC1 ABILITY TO CREATE CONTACTS IN ADDRESS B
                 setPhoneNumber(phoneNumber);
                 break;
 
+                //UC4 ABILITY TO DELETE EXISTING CONTACT PERSON USING THEIR NAME
             case 'I':
                 setFirstName(null);
                 setLastName(null);
