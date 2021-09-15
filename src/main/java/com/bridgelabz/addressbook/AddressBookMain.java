@@ -244,7 +244,7 @@ public class AddressBookMain {
                 list.add(contact);
             }
             list = list.stream().sorted(Comparator.comparing(Contact::getFirstName)).collect(Collectors.toList());
-            list.stream().forEach(n ->{
+            list.stream().forEach(n -> {
                 System.out.println(n.getFirstName());
             });
         }
@@ -257,7 +257,7 @@ public class AddressBookMain {
                 list.add(contact);
             }
             list = list.stream().sorted(Comparator.comparing(Contact::getCity)).collect(Collectors.toList());
-            list.stream().forEach(n ->{
+            list.stream().forEach(n -> {
                 System.out.println(n.getFirstName());
             });
         }
@@ -270,7 +270,7 @@ public class AddressBookMain {
                 list.add(contact);
             }
             list = list.stream().sorted(Comparator.comparing(Contact::getState)).collect(Collectors.toList());
-            list.stream().forEach(n ->{
+            list.stream().forEach(n -> {
                 System.out.println(n.getFirstName());
             });
         }
@@ -283,6 +283,5 @@ public class AddressBookMain {
     String getName() {
         return this.bookName;
     }
-
 
 }
