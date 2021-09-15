@@ -94,10 +94,8 @@ public class Contact {
     }
 
     public void editDetails() {
-
         System.out.println(" SELECT THE OPTION YOU WANT TO EDIT : ");
         System.out.println(" A.FIRST NAME\n B.LAST NAME\n C.ADDRESS\n D.CITY\n E.STATE\n F.EMAIL ID\n G.ZIPCODE\n H.PHONE NUMBER\n I.DELETE CONTACT ");
-
         char option;
         option = sc.next().charAt(0);
         sc.nextLine();
@@ -143,7 +141,6 @@ public class Contact {
                 Long phoneNumber = sc.nextLong();
                 setPhoneNumber(phoneNumber);
                 break;
-
             case 'I':
                 setFirstName(null);
                 setLastName(null);
@@ -153,7 +150,7 @@ public class Contact {
                 setEmail(null);
                 setZipCode(null);
                 setPhoneNumber(null);
-
+                break;
         }
 
     }
