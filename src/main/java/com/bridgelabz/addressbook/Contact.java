@@ -1,9 +1,7 @@
 package com.bridgelabz.addressbook;
 
-import java.util.Scanner;
-
 public class Contact {
-    Scanner sc = new Scanner(System.in);
+
     private String firstName;
     private String lastName;
     private String address;
@@ -84,12 +82,26 @@ public class Contact {
         return phoneNumber;
     }
 
-    public  void setPhoneNumber(Long phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
     public void display() {
         System.out.println(" FIRST NAME: " + getFirstName() + " LAST NAME: " + getLastName() + " ADDRESS: " + getAddress() + " CITY " + getCity()
                 + " STATE:" + getState() + " EMAIL ID:" + getEmail() + " ZIP CODE:" + getZipCode() + " PHONE NUMBER:" + getPhoneNumber());
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", email='" + email + '\'' +
+                ", zipcode=" + zipcode +
+                ", phoneNumber=" + phoneNumber +
+                '}';
     }
 }

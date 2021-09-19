@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class AddressBook {
+    AddressBookFileIoService addressBookFileIoService = new AddressBookFileIoService();
     static HashMap<String, LinkedList<Contact>> data = new HashMap<>();
     static Scanner sc = new Scanner(System.in);
 
@@ -24,6 +25,7 @@ public class AddressBook {
                         if (data.isEmpty() || !data.containsKey(bookName)) {
                             data.put(bookName, records);
                             userInterface(data.get(bookName));
+                            addressBookFileIoService.writeInAddressBook(data);
                             break;
                         } else {
                             System.out.println("NAME ALREADY EXIST.");
@@ -31,6 +33,7 @@ public class AddressBook {
                         }
                     case 2:
                         printBook(data);
+                        addressBookFileIoService.readAddressBook();
                         break;
                     case 3:
                         System.out.println("NAME OF THE ADDRESS BOOK: ");
@@ -156,11 +159,9 @@ public class AddressBook {
         try {
             System.out.println("PLEASE ENTER FIRST NAME:");
             String firstName = sc.next();
-            records.stream().forEach(person -> {
-                if (person.getFirstName().equals(firstName)) {
-                    editDetails(person);
-                    person.display();
-                }
+            records.stream().filter(person -> person.getFirstName().equals(firstName)).forEach(person -> {
+                editDetails(person);
+                person.display();
             });
         }catch (Exception e){
             System.out.println(e);
@@ -168,9 +169,7 @@ public class AddressBook {
     }
 
     public static void view(LinkedList<Contact> records) {
-        records.stream().forEach(person -> {
-            person.display();
-        });
+        records.forEach(Contact::display);
     }
 
     public static void fetchRecordsForCity(HashMap<String, LinkedList<Contact>> data) {
@@ -180,12 +179,7 @@ public class AddressBook {
             List<String> list = new ArrayList<>();
             for (String key : data.keySet()) {
                 data.get(key)
-                        .stream()
-                        .forEach(person -> {
-                            if (person.getCity().equals(city)) {
-                                list.add(person.getFirstName());
-                            }
-                        });
+                        .stream().filter(person -> person.getCity().equals(city)).map(Contact::getFirstName).forEach(list::add);
                 System.out.println("LIST:\n FIRST NAME " + list);
             }
         }catch (Exception e){
@@ -200,12 +194,7 @@ public class AddressBook {
             List<String> list = new ArrayList<>();
             for (String key : data.keySet()) {
                 data.get(key)
-                        .stream()
-                        .forEach(person -> {
-                            if (person.getState().equals(state)) {
-                                list.add(person.getFirstName());
-                            }
-                        });
+                        .stream().filter(person -> person.getState().equals(state)).map(Contact::getFirstName).forEach(list::add);
                 System.out.println("LIST:\n FIRST NAME " + list);
             }
         }catch (Exception e){
@@ -220,12 +209,7 @@ public class AddressBook {
             List<Long> list = new ArrayList<>();
             for (String key : data.keySet()) {
                 data.get(key)
-                        .stream()
-                        .forEach(person -> {
-                            if (person.getFirstName().equals(firstname)) {
-                                list.add(person.getPhoneNumber());
-                            }
-                        });
+                        .stream().filter(person -> person.getFirstName().equals(firstname)).map(Contact::getPhoneNumber).forEach(list::add);
                 System.out.println("LIST:\n PHONE NUMBER " + list);
             }
         }catch (Exception e){
@@ -236,9 +220,7 @@ public class AddressBook {
     public static void sortPersonByName(HashMap<String, LinkedList<Contact>> data) {
         for (String person : data.keySet()) {
             List<Contact> list = new ArrayList<>();
-            for (Contact contact : data.get(person)) {
-                list.add(contact);
-            }
+            list.addAll(data.get(person));
             list = list.stream().sorted(Comparator.comparing(Contact::getFirstName)).collect(Collectors.toList());
             list.stream().forEach(n -> {
                 System.out.println(n.getFirstName());
@@ -249,9 +231,7 @@ public class AddressBook {
     public static void sortPersonByCity(HashMap<String, LinkedList<Contact>> data) {
         for (String person : data.keySet()) {
             List<Contact> list = new ArrayList<>();
-            for (Contact contact : data.get(person)) {
-                list.add(contact);
-            }
+            list.addAll(data.get(person));
             list = list.stream().sorted(Comparator.comparing(Contact::getCity)).collect(Collectors.toList());
             list.stream().forEach(n -> {
                 System.out.println(n.getFirstName());
@@ -262,9 +242,7 @@ public class AddressBook {
     public static void sortPersonByState(HashMap<String, LinkedList<Contact>> data) {
         for (String person : data.keySet()) {
             List<Contact> list = new ArrayList<>();
-            for (Contact contact : data.get(person)) {
-                list.add(contact);
-            }
+            list.addAll(data.get(person));
             list = list.stream().sorted(Comparator.comparing(Contact::getState)).collect(Collectors.toList());
             list.stream().forEach(n -> {
                 System.out.println(n.getFirstName());
@@ -344,5 +322,4 @@ public class AddressBook {
             System.out.println(e);
         }
     }
-
 }
