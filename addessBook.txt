@@ -1,0 +1,4 @@
+KALPESH
+[Contact{firstName='KALPESH', lastName='PATIL', address='NASHIK', city='NASHIK', state='MAHA', email='KALPESH@123', zipcode=422101, phoneNumber=738755}]
+PREM
+[Contact{firstName='PREM', lastName='PATIL', address='NASHIK', city='NASHIK', state='MAHARASHTRA', email='PREM@123', zipcode=422101, phoneNumber=738755}]
