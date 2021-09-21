@@ -1,0 +1,4 @@
+TCS
+[Contact{firstName='PREM', lastName='PATIL', address='NASHIK', city='NASHIK', state='MAHARASHTRA', email='prem@123', zipcode=422101, phoneNumber=738755}]
+TESLA
+[Contact{firstName='KALPESH', lastName='PATIL', address='NAHSIK', city='NASHIK', state='MAHARASHTRA', email='kalpesh@123', zipcode=422101, phoneNumber=82082}]
