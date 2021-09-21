@@ -3,8 +3,7 @@ package com.bridgelabz.addressbook;
 public class AddressBookMain {
     public static void main(String[] args) {
 
-        AddressBook addressBook = new AddressBook();
-        addressBook.newUserInterface();
-
+      AddressBookFileIo addressBookFileIo = new AddressBookFileIo();
+      addressBookFileIo.newUserInterface();
     }
 }

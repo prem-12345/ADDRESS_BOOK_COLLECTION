@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class AddressBookFileIoService {
-    String filePath = "addessBook.txt";
+    String filePath = "addressBook.txt";
 
     public void writeInAddressBook(HashMap<String, LinkedList<Contact>> data) {
         StringBuffer personBuffer = new StringBuffer();
@@ -24,7 +24,7 @@ public class AddressBookFileIoService {
         }
     }
 
-    public void readAddressBook() {
+    public void readFromAddressBook() {
         try {
             Files.lines(new File(filePath).toPath())
                     .forEach(System.out::println);

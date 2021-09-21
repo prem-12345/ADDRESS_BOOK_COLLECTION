@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class AddressBook {
-    AddressBookFileIoService addressBookFileIoService = new AddressBookFileIoService();
     static HashMap<String, LinkedList<Contact>> data = new HashMap<>();
     static Scanner sc = new Scanner(System.in);
 
@@ -25,7 +24,6 @@ public class AddressBook {
                         if (data.isEmpty() || !data.containsKey(bookName)) {
                             data.put(bookName, records);
                             userInterface(data.get(bookName));
-                            addressBookFileIoService.writeInAddressBook(data);
                             break;
                         } else {
                             System.out.println("NAME ALREADY EXIST.");
@@ -33,7 +31,6 @@ public class AddressBook {
                         }
                     case 2:
                         printBook(data);
-                        addressBookFileIoService.readAddressBook();
                         break;
                     case 3:
                         System.out.println("NAME OF THE ADDRESS BOOK: ");
