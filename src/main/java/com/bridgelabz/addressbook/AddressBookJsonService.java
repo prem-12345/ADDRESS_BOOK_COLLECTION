@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class AddressBookGsonService {
-    String filePath = "AddressBook.gson";
+public class AddressBookJsonService {
+    String filePath = "AddressBook.json";
 
     public void writeInAddressBook(HashMap<String, LinkedList<Contact>> data) {
         Gson gson = new Gson();

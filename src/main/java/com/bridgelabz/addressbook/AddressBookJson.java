@@ -2,8 +2,8 @@ package com.bridgelabz.addressbook;
 
 import java.util.LinkedList;
 
-public class AddressBookGson extends AddressBook {
-    AddressBookGsonService addressBookGsonService = new AddressBookGsonService();
+public class AddressBookJson extends AddressBook {
+    AddressBookJsonService addressBookJsonService = new AddressBookJsonService();
 
     public void newUserInterface() {
         try {
@@ -22,14 +22,14 @@ public class AddressBookGson extends AddressBook {
                         if (data.isEmpty() || !data.containsKey(bookName)) {
                             data.put(bookName, records);
                             userInterface(data.get(bookName));
-                            addressBookGsonService.writeInAddressBook(data);
+                            addressBookJsonService.writeInAddressBook(data);
                             break;
                         } else {
                             System.out.println("NAME ALREADY EXIST.");
                             break;
                         }
                     case 2:
-                        addressBookGsonService.readFromAddressBook(data);
+                        addressBookJsonService.readFromAddressBook(data);
                         break;
                     case 3:
                         System.out.println("NAME OF THE ADDRESS BOOK: ");
