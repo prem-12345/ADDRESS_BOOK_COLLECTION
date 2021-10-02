@@ -20,7 +20,6 @@ class AddressBookDataBaseServiceTest {
         List<Person> personList = addressBookDataBaseService.getAllPersonsDetails();
         Assertions.assertEquals(2, personList.size());
     }
-    
 }
 
 
