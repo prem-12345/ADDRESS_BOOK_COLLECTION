@@ -20,6 +20,13 @@ class AddressBookDataBaseServiceTest {
         List<Person> personList = addressBookDataBaseService.getAllPersonsDetails();
         Assertions.assertEquals(2, personList.size());
     }
+
+    @Test
+    public void givenPersonDetails_whenUpdated_shouldReturn_updatedRowCount() {
+        AddressBookDataBaseService addressBookDataBaseService = new AddressBookDataBaseService();
+        int updatedRecord = addressBookDataBaseService.updatePersonDetails("KALPESH", "DELHI");
+        Assertions.assertEquals(1, updatedRecord);
+    }
 }
 
 

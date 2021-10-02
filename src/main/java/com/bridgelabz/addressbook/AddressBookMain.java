@@ -14,10 +14,13 @@ public class AddressBookMain {
         addressBookDataBaseService.insertIntoAddressBook();
 
         // FETCH ALL PERSONS FROM ADDRESSBOOK TABLE
-        List<Person>personList = addressBookDataBaseService.getAllPersonsDetails();
+        List<Person> personList = addressBookDataBaseService.getAllPersonsDetails();
         for (Person person : personList){
             System.out.println(person);
         }
+
+        // UPDATE THE PERSON DETAILS
+        addressBookDataBaseService.updatePersonDetails("KALPESH","DELHI");
 
     }
 }

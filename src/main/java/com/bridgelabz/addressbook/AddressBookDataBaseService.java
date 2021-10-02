@@ -104,4 +104,21 @@ public class AddressBookDataBaseService {
         }
         return personList;
     }
+
+    public int updatePersonDetails(String firstName, String address) {
+        String UPDATE_RECORD_QUERY = "update addressbook set ADDRESS = ? where FIRST_NAME = ? ";
+        int row = 0;
+        try {
+            preparedStatement = connection.prepareStatement(UPDATE_RECORD_QUERY);
+            preparedStatement.setString(1, address);
+            preparedStatement.setString(2, firstName);
+            row = preparedStatement.executeUpdate();
+            System.out.println("rows updated :" + row);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return row;
+    }
+
+
 }
